@@ -10,6 +10,11 @@
     <meta property="og:description" content="Win up to $500! Support the Batbusters 2015 10U softball team.">
     <meta property="og:type" content="website">
 
+    <!-- Disable caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <!-- html2canvas for image download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -654,8 +659,17 @@
         </div>
     </div>
 
-    <script src="data/superbowl_squares.js"></script>
     <script>
+        // Load data file with cache-busting timestamp
+        var script = document.createElement('script');
+        script.src = 'data/superbowl_squares.js?v=' + Date.now();
+        script.onload = function() {
+            renderGrid();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        };
+        document.head.appendChild(script);
+
         // Render grid
         function renderGrid() {
             const grid = document.getElementById('mini-grid');
@@ -721,10 +735,6 @@
             });
         }
 
-        // Initialize
-        renderGrid();
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
