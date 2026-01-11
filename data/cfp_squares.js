@@ -12,7 +12,7 @@ const CFP_CONFIG = {
 // Squares array: null = available, "Name" = taken
 // Index 0-99 maps to the grid (row * 10 + col)
 const CFP_SQUARES = [
-    null, null, null, null, null, null, null, null, null, null,  // Row 0
+    Ryan D, null, null, null, null, null, null, null, null, null,  // Row 0
     null, null, null, null, null, null, null, null, null, null,  // Row 1
     null, null, null, null, null, null, null, null, null, null,  // Row 2
     null, null, null, null, null, null, null, null, null, null,  // Row 3
