@@ -14,7 +14,7 @@ const SUPERBOWL_CONFIG = {
 const SUPERBOWL_SQUARES = [
     null, null, null, null, null, null, null, null, null, null,  // Row 0
     null, null, null, null, null, null, "Derek S", null, null, null,  // Row 1
-    null, null, null, null, "Brittany Q", null, null, null, null, null,  // Row 2
+    null, null, null, null, "Brittany Q", null, null, null, "Emily M", null,  // Row 2
     null, null, null, null, null, null, null, null, null, null,  // Row 3
     "Brittany Q", null, null, null, null, null, null, null, null, null,  // Row 4
     null, null, null, null, null, null, null, null, null, null,  // Row 5
