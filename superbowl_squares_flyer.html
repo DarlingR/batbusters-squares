@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batbusters Super Bowl Squares</title>
+
+    <!-- Open Graph for Facebook sharing -->
+    <meta property="og:title" content="Super Bowl LX Squares - $20 per square!">
+    <meta property="og:description" content="Win up to $500! Support the Batbusters 2015 10U softball team.">
+    <meta property="og:type" content="website">
+
+    <!-- html2canvas for image download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(255, 107, 53, 0.6);
+        }
+
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .flyer {
+            width: 100%;
+            max-width: 480px;
+            background: linear-gradient(180deg, #0a1628 0%, #0d1b2a 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid #c9b037;
+            position: relative;
+        }
+
+        .flyer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9b037, #ffd700, #c9b037);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f0012 0%, #7a1a2e 100%);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-info {
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .superbowl-banner {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a1a2e 100%);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 3px solid #c9b037;
+            position: relative;
+        }
+
+        .superbowl-logo {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .superbowl-banner h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 10px rgba(255,255,255,0.3);
+            margin-bottom: 5px;
+        }
+
+        .superbowl-banner .roman {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.5rem;
+            color: #c9b037;
+            text-shadow: 0 0 20px rgba(201, 176, 55, 0.5);
+        }
+
+        .matchup {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .team-name {
+            color: #ff6b35;
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+
+        .vs {
+            color: #c9b037;
+            font-size: 0.9rem;
+        }
+
+        .game-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .countdown-section {
+            background: linear-gradient(135deg, #c9b037, #ffd700);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .countdown-label {
+            color: #0a1628;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+            color: #0a1628;
+            line-height: 1;
+        }
+
+        .countdown-unit {
+            font-size: 0.6rem;
+            color: #4a4a4a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            padding: 20px;
+            background: linear-gradient(180deg, #0d1b2a 0%, #0a1628 100%);
+        }
+
+        .price-highlight {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #ffffff;
+            text-align: center;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .price-highlight::before {
+            content: 'ONLY';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            opacity: 0.8;
+        }
+
+        .price {
+            font-family: 'Russo One', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-top: 15px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .per-square {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 10px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(201, 176, 55, 0.3);
+        }
+
+        .info-box .label {
+            font-size: 0.65rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .info-box .value {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.4rem;
+            color: #c9b037;
+        }
+
+        .payouts {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(201, 176, 55, 0.2);
+        }
+
+        .payouts h3 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .payout-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .payout-item {
+            text-align: center;
+            padding: 12px 5px;
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.2), rgba(22, 163, 74, 0.1));
+            border-radius: 10px;
+            border: 1px solid rgba(22, 163, 74, 0.3);
+        }
+
+        .payout-item .q {
+            font-size: 0.65rem;
+            color: #888;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .payout-item .amount {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.1rem;
+            color: #4ade80;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+        }
+
+        .payout-item.final {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(22, 163, 74, 0.2));
+            border-color: #4ade80;
+        }
+
+        .payout-item.final .amount {
+            font-size: 1.4rem;
+        }
+
+        .squares-grid-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(201, 176, 55, 0.2);
+        }
+
+        .squares-grid-section h3 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .squares-status {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .squares-status .available-num {
+            font-weight: bold;
+            color: #4ade80;
+            font-size: 1.1rem;
+        }
+
+        .squares-status .sold-num {
+            color: #ff6b35;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 3px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .mini-cell {
+            aspect-ratio: 1;
+            background: rgba(74, 222, 128, 0.2);
+            border-radius: 3px;
+            font-size: 0.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .mini-cell.taken {
+            background: linear-gradient(135deg, #4f0012, #7a1a2e);
+            color: #fff;
+            border-color: #7a1a2e;
+        }
+
+        .grid-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .legend-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+        }
+
+        .legend-box.available {
+            background: rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .legend-box.sold {
+            background: linear-gradient(135deg, #4f0012, #7a1a2e);
+        }
+
+        .fundraiser-callout {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(22, 163, 74, 0.1));
+            border: 2px solid #4ade80;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .fundraiser-callout p {
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #4f0012 0%, #7a1a2e 100%);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+            animation: shine 3s infinite;
+        }
+
+        .contact-section h3 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            font-size: 1.3rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .payment-note {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #4f0012 0%, #7a1a2e 100%);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 100px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @media (max-width: 400px) {
+            .flyer { border-radius: 0; }
+            .price { font-size: 3rem; }
+            .payout-grid { grid-template-columns: repeat(2, 1fr); }
+            .countdown { gap: 10px; }
+            .superbowl-banner h1 { font-size: 1.5rem; }
+            .superbowl-banner .roman { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadFlyer()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download for Facebook
+    </button>
+
+    <div class="flyer" id="flyer">
+        <div class="header">
+            <img src="BBLogo2.png" alt="Batbusters" class="logo">
+            <p class="team-info">2015 10U | Spring 2026 Fundraiser</p>
+        </div>
+
+        <div class="superbowl-banner">
+            <div class="superbowl-logo">🏈</div>
+            <h1>Super Bowl</h1>
+            <div class="roman">LX</div>
+            <div class="matchup">
+                <span class="team-name">AFC Champ</span>
+                <span class="vs">vs</span>
+                <span class="team-name">NFC Champ</span>
+            </div>
+            <p class="game-date">February 2026 | New Orleans</p>
+        </div>
+
+        <div class="countdown-section">
+            <div class="countdown-label">Kickoff Countdown</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">--</div>
+                    <div class="countdown-unit">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">--</div>
+                    <div class="countdown-unit">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="mins">--</div>
+                    <div class="countdown-unit">Mins</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="secs">--</div>
+                    <div class="countdown-unit">Secs</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="price-highlight pulse">
+                <div class="price">$20</div>
+                <div class="per-square">per square</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-box">
+                    <div class="label">Total Pot</div>
+                    <div class="value">$2,000</div>
+                </div>
+                <div class="info-box">
+                    <div class="label">Prize Pool</div>
+                    <div class="value">$1,000</div>
+                </div>
+                <div class="info-box">
+                    <div class="label">Squares</div>
+                    <div class="value">100</div>
+                </div>
+            </div>
+
+            <div class="payouts">
+                <h3>💰 Win Every Quarter! 💰</h3>
+                <div class="payout-grid">
+                    <div class="payout-item">
+                        <div class="q">Q1</div>
+                        <div class="amount">$100</div>
+                    </div>
+                    <div class="payout-item">
+                        <div class="q">Half</div>
+                        <div class="amount">$200</div>
+                    </div>
+                    <div class="payout-item">
+                        <div class="q">Q3</div>
+                        <div class="amount">$200</div>
+                    </div>
+                    <div class="payout-item final">
+                        <div class="q">Final</div>
+                        <div class="amount">$500</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="squares-grid-section">
+                <h3>🎯 Live Grid 🎯</h3>
+                <p class="squares-status">
+                    <span class="available-num" id="available-count">100</span> available
+                    <span style="margin: 0 8px;">|</span>
+                    <span class="sold-num" id="sold-count">0</span> sold
+                </p>
+                <div class="mini-grid" id="mini-grid"></div>
+                <div class="grid-legend">
+                    <div class="legend-item"><div class="legend-box available"></div> Available</div>
+                    <div class="legend-item"><div class="legend-box sold"></div> Sold</div>
+                </div>
+            </div>
+
+            <div class="fundraiser-callout">
+                <p>🥎 50% supports our 2026 Spring Season! 🥎</p>
+            </div>
+
+            <div class="contact-section">
+                <h3>🏈 Claim Your Squares! 🏈</h3>
+                <p class="contact-info">Venmo: @RyanDarling</p>
+                <p class="payment-note">Last 4: 4387 | Memo: "NFL" + square #s</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <img src="BBLogo2.png" alt="Batbusters" class="footer-logo">
+        </div>
+    </div>
+
+    <script src="data/superbowl_squares.js"></script>
+    <script>
+        // Render grid
+        function renderGrid() {
+            const grid = document.getElementById('mini-grid');
+            const squares = typeof SUPERBOWL_SQUARES !== 'undefined' ? SUPERBOWL_SQUARES : new Array(100).fill(null);
+
+            let sold = 0;
+            grid.innerHTML = '';
+
+            for (let i = 0; i < 100; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'mini-cell';
+                cell.textContent = i + 1;
+
+                if (squares[i]) {
+                    cell.classList.add('taken');
+                    sold++;
+                }
+
+                grid.appendChild(cell);
+            }
+
+            document.getElementById('sold-count').textContent = sold;
+            document.getElementById('available-count').textContent = 100 - sold;
+        }
+
+        // Countdown timer - Super Bowl LX February 8, 2026 6:30 PM EST
+        function updateCountdown() {
+            const gameDate = new Date('2026-02-08T18:30:00-05:00');
+            const now = new Date();
+            const diff = gameDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('mins').textContent = '0';
+                document.getElementById('secs').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('mins').textContent = mins;
+            document.getElementById('secs').textContent = secs;
+        }
+
+        // Download flyer as image
+        function downloadFlyer() {
+            const flyer = document.getElementById('flyer');
+            html2canvas(flyer, {
+                scale: 2,
+                backgroundColor: '#0a1628',
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'superbowl-squares-flyer.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Initialize
+        renderGrid();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

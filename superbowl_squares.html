@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batbusters 2015 10U - Super Bowl Squares</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            color: #4f0012;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h3 {
+            color: #4f0012;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .card .detail {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .grid-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .grid-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .team-label {
+            font-weight: bold;
+            color: #4f0012;
+            font-size: 0.9rem;
+        }
+
+        .grid-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            background: #ffffff;
+        }
+
+        th, td {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #cbd5e1;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        th {
+            background: #4f0012;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .corner {
+            background: #f1f5f9;
+            border: 2px solid #cbd5e1;
+        }
+
+        td {
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        td:hover {
+            background: #fce7ef;
+        }
+
+        .payouts {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .payouts h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .payout-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .payout-item {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #bbf7d0;
+        }
+
+        .payout-item .quarter {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .payout-item .amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        .payout-item .percent {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .rules {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .rules h2 {
+            color: #0f172a;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .rules ol {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .rules li {
+            margin-bottom: 8px;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #fdf2f4, #fce7ef);
+            border-radius: 12px;
+            border: 2px solid #4f0012;
+        }
+
+        .contact h2 {
+            color: #4f0012;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #4f0012;
+            font-weight: bold;
+        }
+
+        .fundraiser-note {
+            background: linear-gradient(135deg, #4f0012, #7a1a2e);
+            border: 2px solid #4f0012;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .fundraiser-note p {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            th, td { width: 35px; height: 35px; font-size: 0.65rem; }
+            .payout-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p class="team-name">Batbusters 2015 10U Fundraiser</p>
+            <h1>Super Bowl LX Squares</h1>
+            <p class="subtitle">February 2026 | Support Our Team!</p>
+        </header>
+
+        <div class="fundraiser-note">
+            <p>50% of all proceeds support the Batbusters 2015 10U 2026 Spring Season!</p>
+        </div>
+
+        <div class="info-cards">
+            <div class="card">
+                <h3>Cost Per Square</h3>
+                <div class="value">$20</div>
+                <div class="detail">100 squares available</div>
+            </div>
+            <div class="card">
+                <h3>Total Pot</h3>
+                <div class="value">$2,000</div>
+                <div class="detail">When fully sold</div>
+            </div>
+            <div class="card">
+                <h3>Prize Pool</h3>
+                <div class="value">$1,000</div>
+                <div class="detail">4 chances to win!</div>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-header">
+                <p class="team-label">AFC CHAMPION (TBD) →</p>
+            </div>
+            <div class="grid-wrapper">
+                <table>
+                    <tr>
+                        <th class="corner"></th>
+                        <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th>
+                        <th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                    </tr>
+                    <tr>
+                        <th>0</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <td></td><td></td><td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="grid-header" style="margin-top: 10px;">
+                <p class="team-label">↑ NFC CHAMPION (TBD)</p>
+            </div>
+        </div>
+
+        <div class="payouts">
+            <h2>Prize Payouts</h2>
+            <div class="payout-grid">
+                <div class="payout-item">
+                    <div class="quarter">1st Quarter</div>
+                    <div class="amount">$100</div>
+                    <div class="percent">10% of prize pool</div>
+                </div>
+                <div class="payout-item">
+                    <div class="quarter">Halftime</div>
+                    <div class="amount">$200</div>
+                    <div class="percent">20% of prize pool</div>
+                </div>
+                <div class="payout-item">
+                    <div class="quarter">3rd Quarter</div>
+                    <div class="amount">$200</div>
+                    <div class="percent">20% of prize pool</div>
+                </div>
+                <div class="payout-item">
+                    <div class="quarter">Final Score</div>
+                    <div class="amount">$500</div>
+                    <div class="percent">50% of prize pool</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rules">
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Pick your squares:</strong> Choose any available square(s) on the grid for <span class="highlight">$20 each</span>.</li>
+                <li><strong>Write your name:</strong> Your name will be entered in the square(s) you purchase.</li>
+                <li><strong>Numbers are assigned:</strong> After all squares are sold, numbers 0-9 are <strong>randomly assigned</strong> to each row and column.</li>
+                <li><strong>Match the score:</strong> At the end of each quarter, look at the <strong>last digit</strong> of each team's score. Find where those numbers intersect on the grid.</li>
+                <li><strong>Win prizes:</strong> If your square matches the score, you win that quarter's prize!</li>
+            </ol>
+            <p style="margin-top: 15px; text-align: center; color: #64748b;">
+                <em>Example: If the score is AFC 17, NFC 24 at halftime, the square at column 7, row 4 wins $200!</em>
+            </p>
+        </div>
+
+        <div class="contact">
+            <h2>Ready to Play?</h2>
+            <p>Contact us to claim your squares!</p>
+            <p style="font-size: 1.2rem; margin-top: 15px;">
+                <span class="highlight">[Your Name]</span><br>
+                <span class="highlight">[Phone/Email]</span>
+            </p>
+            <p style="margin-top: 20px; color: #78716c;">
+                Payment accepted via Cash, Venmo, or Zelle<br>
+                Squares assigned on first-come, first-served basis
+            </p>
+        </div>
+
+        <footer style="text-align: center; margin-top: 30px; color: #64748b; font-size: 0.85rem;">
+            <p>Thank you for supporting the Batbusters 2015 10U 2026 Spring Season!</p>
+        </footer>
+    </div>
+</body>
+</html>
