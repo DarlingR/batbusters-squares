@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Bowl LX - Final Grid</title>
+
+    <!-- Disable caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .grid-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .header .roman {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2rem;
+            color: #c9b037;
+        }
+
+        .header .matchup {
+            font-size: 1.2rem;
+            color: #4f0012;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .header .date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .team-labels {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .team-label {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.9rem;
+            color: #4f0012;
+            padding: 5px 15px;
+            background: #fce7ef;
+            border-radius: 20px;
+        }
+
+        .grid-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            font-size: 0.7rem;
+        }
+
+        th, td {
+            width: 65px;
+            height: 50px;
+            border: 2px solid #cbd5e1;
+            text-align: center;
+            vertical-align: middle;
+            padding: 3px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #4f0012, #7a1a2e);
+            color: #fff;
+            font-family: 'Russo One', sans-serif;
+            font-size: 1rem;
+        }
+
+        th.corner {
+            background: #c9b037;
+        }
+
+        th.team1-num {
+            background: linear-gradient(135deg, #0d1b2a, #1a1a2e);
+            color: #c9b037;
+            font-size: 1.2rem;
+        }
+
+        th.team2-num {
+            background: linear-gradient(135deg, #0d1b2a, #1a1a2e);
+            color: #c9b037;
+            font-size: 1.2rem;
+            width: 40px;
+        }
+
+        td {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #1a1a2e;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+        td.taken {
+            background: linear-gradient(135deg, #fce7ef, #fdf2f4);
+            color: #4f0012;
+        }
+
+        .payouts {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .payout-item {
+            background: linear-gradient(135deg, #dcfce7, #d1fae5);
+            border: 2px solid #4ade80;
+            border-radius: 10px;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .payout-item .quarter {
+            font-size: 0.75rem;
+            color: #166534;
+            text-transform: uppercase;
+        }
+
+        .payout-item .amount {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.2rem;
+            color: #16a34a;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .not-ready {
+            background: #fef3c7;
+            border: 2px solid #fcd34d;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #92400e;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            th, td {
+                width: 55px;
+                height: 45px;
+                font-size: 0.6rem;
+            }
+            th.team2-num {
+                width: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadGrid()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download Grid Image
+    </button>
+
+    <div id="not-ready-banner"></div>
+
+    <div class="grid-container" id="grid-container">
+        <div class="header">
+            <img src="BBLogo2.png" alt="Batbusters">
+            <h1>Super Bowl Squares</h1>
+            <div class="roman">LX</div>
+            <p class="matchup" id="matchup">AFC Champion vs NFC Champion</p>
+            <p class="date" id="game-date">February 2026 | New Orleans</p>
+        </div>
+
+        <div class="team-labels">
+            <span class="team-label" id="team1-label">← AFC Champion (columns)</span>
+        </div>
+
+        <div class="grid-wrapper">
+            <table id="grid-table">
+                <!-- Generated by JavaScript -->
+            </table>
+        </div>
+
+        <div class="team-labels" style="margin-top: 10px;">
+            <span class="team-label" id="team2-label">↑ NFC Champion (rows)</span>
+        </div>
+
+        <div class="payouts">
+            <div class="payout-item">
+                <div class="quarter">Q1</div>
+                <div class="amount">$100</div>
+            </div>
+            <div class="payout-item">
+                <div class="quarter">Halftime</div>
+                <div class="amount">$200</div>
+            </div>
+            <div class="payout-item">
+                <div class="quarter">Q3</div>
+                <div class="amount">$200</div>
+            </div>
+            <div class="payout-item">
+                <div class="quarter">Final</div>
+                <div class="amount">$500</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Batbusters 2015 10U | 2026 Spring Season Fundraiser</p>
+        </div>
+    </div>
+
+    <script>
+        // Load data file with cache-busting
+        var script = document.createElement('script');
+        script.src = 'data/superbowl_squares.js?v=' + Date.now();
+        script.onload = function() {
+            renderGrid();
+        };
+        document.head.appendChild(script);
+
+        function renderGrid() {
+            const config = typeof SUPERBOWL_CONFIG !== 'undefined' ? SUPERBOWL_CONFIG : {};
+            const squares = typeof SUPERBOWL_SQUARES !== 'undefined' ? SUPERBOWL_SQUARES : new Array(100).fill(null);
+            const numbers = typeof SUPERBOWL_NUMBERS !== 'undefined' ? SUPERBOWL_NUMBERS : { team1: new Array(10).fill(null), team2: new Array(10).fill(null) };
+
+            // Update labels
+            if (config.team1) {
+                document.getElementById('team1-label').textContent = '← ' + config.team1 + ' (columns)';
+            }
+            if (config.team2) {
+                document.getElementById('team2-label').textContent = '↑ ' + config.team2 + ' (rows)';
+            }
+            if (config.team1 && config.team2) {
+                document.getElementById('matchup').textContent = config.team1 + ' vs ' + config.team2;
+            }
+
+            // Check if numbers are drawn
+            const numbersDrawn = numbers.team1[0] !== null;
+            if (!numbersDrawn) {
+                document.getElementById('not-ready-banner').innerHTML =
+                    '<div class="not-ready">Numbers not yet drawn. Grid will be finalized after all squares are sold.</div>';
+            }
+
+            // Build table
+            const table = document.getElementById('grid-table');
+            let html = '<tr><th class="corner"></th>';
+
+            // Header row with team1 numbers
+            for (let i = 0; i < 10; i++) {
+                const num = numbers.team1[i] !== null ? numbers.team1[i] : '?';
+                html += '<th class="team1-num">' + num + '</th>';
+            }
+            html += '</tr>';
+
+            // Data rows
+            for (let row = 0; row < 10; row++) {
+                const rowNum = numbers.team2[row] !== null ? numbers.team2[row] : '?';
+                html += '<tr><th class="team2-num">' + rowNum + '</th>';
+
+                for (let col = 0; col < 10; col++) {
+                    const index = row * 10 + col;
+                    const name = squares[index];
+                    if (name) {
+                        html += '<td class="taken">' + name + '</td>';
+                    } else {
+                        html += '<td></td>';
+                    }
+                }
+                html += '</tr>';
+            }
+
+            table.innerHTML = html;
+        }
+
+        function downloadGrid() {
+            const container = document.getElementById('grid-container');
+            html2canvas(container, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'superbowl-final-grid.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
