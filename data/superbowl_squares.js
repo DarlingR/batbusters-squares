@@ -18,9 +18,9 @@ const SUPERBOWL_SQUARES = [
     null, null, null, null, null, null, null, null, null, null,  // Row 3
     "Brittany Q", null, null, null, null, null, null, null, null, null,  // Row 4
     null, null, null, null, null, null, null, null, null, null,  // Row 5
-    null, null, null, null, null, null, null, null, null, null,  // Row 6
+    null, null, null, null, null, null, "Terri D", null, null, null,  // Row 6
     null, null, null, null, null, null, null, null, null, null,  // Row 7
-    null, null, null, null, null, null, null, null, null, null,  // Row 8
+    null, null, null, "Terri D", null, null, null, null, null, null,  // Row 8
     null, null, null, null, null, null, null, null, null, null   // Row 9
 ];
 
