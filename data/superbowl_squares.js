@@ -13,7 +13,7 @@ const SUPERBOWL_CONFIG = {
 // Index 0-99 maps to the grid (row * 10 + col)
 const SUPERBOWL_SQUARES = [
     null, null, null, "Shannon D", null, null, null, null, "Kathy V", "Cassie S",  // Row 0
-    null, "Vivian D", "Paul L", null, null, null, "Derek S", "Gail B", "Vivian D", "Will G",  // Row 1
+    null, "Vivian D", "Paul L", "Josh B", null, null, "Derek S", "Gail B", "Vivian D", "Will G",  // Row 1
     "Patricia B", "Will G", "Ryann B", null, "Brittany Q", null, "Ryann B", null, "Emily M", null,  // Row 2
     "Alyssa A", null, null, null, null, null, null, null, null, "Anthony F",  // Row 3
     "Brittany Q", "Dayna K", "Gail B", null, null, null, "Paul L", null, null, null,  // Row 4
