@@ -21,7 +21,7 @@ const SUPERBOWL_SQUARES = [
     null, "Brandon E", null, null, "Cassie S", null, "Terri D", null, null, null,  // Row 6
     null, null, null, null, "Patricia B", null, "Michelle C", null, null, null,  // Row 7
     "Cassidy V", null, null, "Terri D", null, null, null, "Shannon D", null, null,  // Row 8
-    null, null, null, null, null, null, null, null, "Crystal V", "Michelle C"   // Row 9
+    "Matt M", null, null, null, null, null, null, null, "Crystal V", "Michelle C"   // Row 9
 ];
 
 // Random numbers assigned after all squares sold (null until drawn)
