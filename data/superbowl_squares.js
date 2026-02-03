@@ -4,7 +4,7 @@
 const SUPERBOWL_CONFIG = {
     event: "Super Bowl LX",
     team1: "AFC Champion (TBD)",
-    team2: "NFC Champion (TBD)",
+    team2: "NFC Champion (TBD)", 
     date: "February 2026",
     pricePerSquare: 20
 };
