@@ -15,7 +15,7 @@ const SUPERBOWL_SQUARES = [
     "Willis G", "Will G", "Monica B", "Shannon D", "Pauly P", "Terri D", "Susan M", "Pauly P", "Kathy V", "Cassie S",  // Row 0
     "Liz M", "Vivian D", "Paul L", "Josh B", "Derek S", "Selina S", "Derek S", "Gail B", "Vivian D", "Will G",  // Row 1
     "Patricia B", "Will G", "Ryann B", "Crystal V", "Brittany Q", "Clinton S", "Ryann B", "David P", "Emily M", "Monica B",  // Row 2
-    "Alyssa A", "Brandon E", "Vivian D", null, "David P", "Michelle L", "Will G", "Pauly P", "Patricia B", "Anthony F",  // Row 3
+    "Alyssa A", "Brandon E", "Vivian D", "Mike L", "David P", "Michelle L", "Will G", "Pauly P", "Patricia B", "Anthony F",  // Row 3
     "Brittany Q", "Dayna K", "Gail B", "Michelle C", null, "Brad A", "Paul L", null, "Vivian D", "Brad P",  // Row 4
     null, "Liz M", "Christine C", "Selina S", "Dakota N", "Willis G", "Patrick W", null, "Christy Q", "Vivian D",  // Row 5
     "David P", "Brandon E", null, null, "Cassie S", "David P", "Terri D", "Steve M", "Terri D", "Patricia B",  // Row 6
