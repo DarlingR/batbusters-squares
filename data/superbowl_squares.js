@@ -20,7 +20,7 @@ const SUPERBOWL_SQUARES = [
     "Aaron S", "Liz M", "Christine C", "Selina S", "Dakota N", "Willis G", "Patrick W", "Reginald E", "Christy Q", "Vivian D",  // Row 5
     "David P", "Brandon E", "Thomas T", "Cheryl K", "Cassie S", "David P", "Terri D", "Steve M", "Terri D", "Patricia B",  // Row 6
     "Dawn H", "Reginald E", "Will G", "Joan B", "Patricia B", "Vivian D", "Michelle C", "Christine C", "Michelle L", "Willis G",  // Row 7
-    "Cassidy V", "Reginald E", "Tony P", "Terri D", "Michelle L", "David P", "Reginald E", "Shannon D", "Dakota N", "Reginald E",  // Row 8
+    "Cassidy V", null, "Tony P", "Terri D", "Michelle L", "David P", "Reginald E", "Shannon D", "Dakota N", "Reginald E",  // Row 8
     "Matt M", "Briana T", "Will G", "Reginald E", null, null, "Tony P", "Willis G", "Crystal V", "Michelle C"   // Row 9
 ];
 
