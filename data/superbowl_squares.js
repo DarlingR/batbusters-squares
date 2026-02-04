@@ -20,8 +20,8 @@ const SUPERBOWL_SQUARES = [
     "Aaron S", "Liz M", "Christine C", "Selina S", "Dakota N", "Willis G", "Patrick W", "Reginald E", "Christy Q", "Vivian D",  // Row 5
     "David P", "Brandon E", "Thomas T", "Cheryl K", "Cassie S", "David P", "Terri D", "Steve M", "Terri D", "Patricia B",  // Row 6
     "Dawn H", "Reginald E", "Will G", "Joan B", "Patricia B", "Vivian D", "Michelle C", "Christine C", "Michelle L", "Willis G",  // Row 7
-    "Cassidy V", null, "Tony P", "Terri D", "Michelle L", "David P", "Reginald E", "Shannon D", "Dakota N", "Reginald E",  // Row 8
-    "Matt M", "Briana T", "Will G", "Reginald E", null, null, "Tony P", "Willis G", "Crystal V", "Michelle C"   // Row 9
+    "Cassidy V", "Derek S", "Tony P", "Terri D", "Michelle L", "David P", "Reginald E", "Shannon D", "Dakota N", "Reginald E",  // Row 8
+    "Matt M", "Briana T", "Will G", "Reginald E", "Derek S", "Derek S", "Tony P", "Willis G", "Crystal V", "Michelle C"   // Row 9
 ];
 
 // Random numbers assigned after all squares sold (null until drawn)
