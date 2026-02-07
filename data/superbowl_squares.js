@@ -3,9 +3,9 @@
 
 const SUPERBOWL_CONFIG = {
     event: "Super Bowl LX",
-    team1: "AFC Champion (TBD)",
-    team2: "NFC Champion (TBD)", 
-    date: "February 2026",
+    team1: "New England Patriots",
+    team2: "Seattle Seahawks",
+    date: "February 8, 2026",
     pricePerSquare: 20
 };
 
@@ -24,8 +24,8 @@ const SUPERBOWL_SQUARES = [
     "Matt M", "Briana T", "Will G", "Reginald E", "Derek S", "Derek S", "Tony P", "Willis G", "Crystal V", "Michelle C"   // Row 9
 ];
 
-// Random numbers assigned after all squares sold (null until drawn)
+// Random numbers drawn - assigned to grid positions
 const SUPERBOWL_NUMBERS = {
-    team1: [null, null, null, null, null, null, null, null, null, null], // columns 0-9
-    team2: [null, null, null, null, null, null, null, null, null, null]  // rows 0-9
+    team1: [5, 0, 3, 1, 4, 9, 7, 2, 8, 6], // columns 0-9 (Patriots/AFC)
+    team2: [6, 0, 4, 7, 9, 5, 1, 8, 2, 3]  // rows 0-9 (Seahawks/NFC)
 };
