@@ -10,7 +10,7 @@ Support our 2026 Spring Season! 50% of all proceeds go to the team.
 
 ### Super Bowl LX ($20/square)
 - **Flyer:** [superbowl_squares_flyer.html](https://darlingr.github.io/batbusters-squares/superbowl_squares_flyer.html)
-- **Final Grid:** [superbowl_final_grid.html](https://darlingr.github.io/batbusters-squares/superbowl_final_grid.html)
+- **Final Grid:** [superbowl_squares.html](https://darlingr.github.io/batbusters-squares/superbowl_squares.html)
 
 ### Admin
 - **Manage Squares:** [admin.html](https://darlingr.github.io/batbusters-squares/admin.html)
